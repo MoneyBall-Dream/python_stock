@@ -38,7 +38,8 @@ def get_stock_history(stock_name:str) -> pd.DataFrame:
 def get_exchange_rate():
     df = yf.download("KRW=X",
                      period='1d',
-                     auto_adjust=True)
+                     auto_adjust=True,
+                     progress=False) # 진행 상태 표시 비활성화
     exchange_rate = df['Close'].iloc[-1].item()
     return exchange_rate
 

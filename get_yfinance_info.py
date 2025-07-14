@@ -36,8 +36,11 @@ def get_stock_history(stock_name:str) -> pd.DataFrame:
 
 # 환율 데이터 추출
 def get_exchange_rate():
-    df = yf.download("KRW=X")
-    print(df)
+    df = yf.download("KRW=X",
+                     period='1d',
+                     auto_adjust=True)
+    exchange_rate = df['Close'].iloc[-1].item()
+    return exchange_rate
 
 # print(get_stock_data('MSFT'))
 # print(get_stock_history('MSFT'))

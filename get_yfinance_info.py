@@ -1,5 +1,6 @@
 import pandas as pd
 import yfinance as yf
+import fear_and_greed as fag
 
 # yfinance 정보 추출 목록
 info_list = ['longBusinessSummary', # 기업 간단 소개
@@ -43,6 +44,17 @@ def get_exchange_rate():
     exchange_rate = df['Close'].iloc[-1].item()
     return exchange_rate
 
+def get_fear_and_greed():
+    '''
+    Fear & Greed Index 값 받아오기
+    fear_and_greed.get() 반환값: (fear & greed 값, 설명, 마지막 업데이트 날짜)
+    ex. 54.4857, 'neutral', datetime.datetime(2025, 8, 6, 0, 0, tzinfo=datetime.timezone.utc)
+    '''
+    value, description, _ = fag.get()
+    return value, description
 # print(get_stock_data('MSFT'))
 # print(get_stock_history('MSFT'))
 # get_exchange_rate()
+
+# fear_and_greed_value, fear_and_greed_description = get_fear_and_greed()
+# print(fear_and_greed_value,fear_and_greed_description)

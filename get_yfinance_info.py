@@ -51,6 +51,7 @@ def get_fear_and_greed():
     ex. 54.4857, 'neutral', datetime.datetime(2025, 8, 6, 0, 0, tzinfo=datetime.timezone.utc)
     '''
     value, description, _ = fag.get()
+    value = round(value, 2)
     return value, description
 # print(get_stock_data('MSFT'))
 # print(get_stock_history('MSFT'))
